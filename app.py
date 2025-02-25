@@ -5,7 +5,11 @@ from langchain_community.embeddings import HuggingFaceEmbeddings  # type: ignore
 from langchain_core.prompts import ChatPromptTemplate  # type: ignore
 from langchain_community.vectorstores import FAISS  # type: ignore
 from langchain_groq import ChatGroq  # type: ignore
+from dotenv import load_dotenv # type: ignore
+import os
 
+load_dotenv()
+api_key = os.getenv("GROQ_API_KEY")
 # Define custom prompt
 custom_prompt_template = """
 Use the pieces of information provided in the context to answer the user's question.
