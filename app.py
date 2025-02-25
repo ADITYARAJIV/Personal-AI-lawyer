@@ -8,7 +8,13 @@ from langchain_groq import ChatGroq  # type: ignore
 from dotenv import load_dotenv # type: ignore
 import os
 
+if "groq" not in st.secrets or "api_key" not in st.secrets["groq"]:
+    st.error("Groq API key not found! Please set it in Streamlit Secrets.")
+    st.stop()
+
+# Retrieve API key from Streamlit secrets
 api_key = st.secrets["groq"]["groq_api_key"]
+
 # Define custom prompt
 custom_prompt_template = """
 Use the pieces of information provided in the context to answer the user's question.
