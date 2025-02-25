@@ -8,8 +8,7 @@ from langchain_groq import ChatGroq  # type: ignore
 from dotenv import load_dotenv # type: ignore
 import os
 
-load_dotenv()
-groq_api_key = os.getenv("GROQ_API_KEY")
+api_key = st.secrets["groq"]["groq_api_key"]
 # Define custom prompt
 custom_prompt_template = """
 Use the pieces of information provided in the context to answer the user's question.
