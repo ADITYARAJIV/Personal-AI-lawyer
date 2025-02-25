@@ -9,7 +9,7 @@ from dotenv import load_dotenv # type: ignore
 import os
 
 load_dotenv()
-api_key = os.getenv("GROQ_API_KEY")
+groq_api_key = os.getenv("GROQ_API_KEY")
 # Define custom prompt
 custom_prompt_template = """
 Use the pieces of information provided in the context to answer the user's question.
@@ -25,7 +25,7 @@ FAISS_DB_PATH = "vectorstore/db_faiss"
 pdfs_directory = "pdfs/"
 
 # Initialize Groq LLM (Change model as needed)
-llm_model = ChatGroq(model="deepseek-r1-distill-llama-70b")  # Keeping Groq
+llm_model = ChatGroq(model="deepseek-r1-distill-llama-70b", api_key = groq_api_key)  # Keeping Groq
 
 # Step 1: Upload & Load PDF
 def upload_pdf(file):
